@@ -28,21 +28,21 @@ public class BaseTest {
 		driver = new ChromeDriver();
 		driver.get(prop.getProperty("testurl"));
 		
-		if (driver == null) {
-			FileReader fr1 = new FileReader("C:\\Users\\mayur\\git\\Selenium-Test\\SeleniumD\\src\\main\\resources\\configfiles\\config.properties");
-			prop.load(fr1); // load the properties reader, object
-		}
-		
-		if (prop.getProperty("brower").equalsIgnoreCase("chrome")) {
-
-			driver = new ChromeDriver();
-			driver.get(prop.getProperty("testurl"));
-
-		} else if (prop.getProperty("browser").equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-			driver.get(prop.getProperty("testurl"));
-
-		}
+//		if (driver == null) {
+//			FileReader fr1 = new FileReader("C:\\Users\\mayur\\git\\Selenium-Test\\SeleniumD\\src\\main\\resources\\configfiles\\config.properties");
+//			prop.load(fr1); // load the properties reader, object
+//		}
+//		
+//		if (prop.getProperty("brower").equalsIgnoreCase("chrome")) {
+//
+//			driver = new ChromeDriver();
+//			driver.get(prop.getProperty("testurl"));
+//
+//		} else if (prop.getProperty("browser").equalsIgnoreCase("firefox")) {
+//			driver = new FirefoxDriver();
+//			driver.get(prop.getProperty("testurl"));
+//
+//		}
 
 	}
 @AfterTest 

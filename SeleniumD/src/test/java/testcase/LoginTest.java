@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import base.BaseTest;
 
-public class LoginTest  extends BaseTest{
+public class LoginTest extends BaseTest {
 
 	@Test(priority = 1)
 
@@ -18,37 +18,39 @@ public class LoginTest  extends BaseTest{
 		driver.findElement(By.xpath("//input[@id='RememberMe']")).click();
 		driver.findElement(By.xpath("//input[@class='button-1 login-button']")).click();
 
-		String Exp = "Jerry1489@gmail.com";
 		String Act = driver.findElement(By.xpath("//a[@class='account']")).getText();
+		String Exp = "Jerry1489@gmail.com";
 		Assert.assertEquals(Exp, Act);
 
 	}
 
 	@Test(priority = 2)
-	public static void VerifyBookPurchase() {
+	public static void VerifyLoginWithIncorrectUsername() {
+		
 		driver.findElement(By.xpath("//a[@class='ico-login']")).click();
-		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("Jerry1489@gmail.com");
+		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("Jerr@gmail.com");
 		driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Jerry@1997");
 		driver.findElement(By.xpath("//input[@id='RememberMe']")).click();
 		driver.findElement(By.xpath("//input[@class='button-1 login-button']")).click();
-		driver.findElement(By.xpath("(//a[@class=''])[2]")).click(); // absolute xpath used
-		driver.findElement(By.xpath("//*[@class='active']")).click(); // dynamic xpath
-		driver.findElement(By.xpath("//select[@id='products-orderby']")).click();
 
+		String Act = driver.findElement(By.xpath("//span[contains(text(),'Login was unsuccessful. Please correct the errors ')]")).getText();
+		String Exp = "Login was unsuccessful. Please correct the errors and try again.";
+	    Assert.assertEquals(Exp, Act);
+	
 	}
 
-//	@Test(priority=2)
-//	
-//	public static void VerifyBook(){
-//		
-//		
-//		
-//	}
-//	
+	@Test(priority = 3)
+	public static void VerifyLoginWithIncorrectPassword() {
+		
+		driver.findElement(By.xpath("//a[@class='ico-login']")).click();
+		driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("Jerry1489@gmail.com");
+		driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Jerry@");
+		driver.findElement(By.xpath("//input[@id='RememberMe']")).click();
+		driver.findElement(By.xpath("//input[@class='button-1 login-button']")).click();
+
+		String Act = driver.findElement(By.xpath("//span[contains(text(),'Login was unsuccessful. Please correct the errors ')]")).getText();
+		String Exp = "Login was unsuccessful. Please correct the errors and try again.";
+	    Assert.assertEquals(Exp, Act);
 	
-	
-	
-	
-	
-	
+	}	
 }
